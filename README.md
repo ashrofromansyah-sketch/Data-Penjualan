@@ -18,4 +18,12 @@ Program ini menggunakan konsep **Multi Linked List**, dengan penjelasan sebagai 
 Setiap toko dapat memiliki lebih dari satu relasi barang, dan setiap barang dapat
 dihubungkan ke lebih dari satu toko melalui node relasi.
 
+---
 
+##  Struktur File
+Program ini terdiri dari tiga file utama:
+- `mll.h` : Berisi deklarasi struktur data dan prototype fungsi
+- `mll.cpp` : Berisi implementasi fungsi-fungsi Multi Linked List
+- `main.cpp` : Berisi program utama dan menu interaktif
+
+---
