@@ -86,3 +86,14 @@ void showTokoAndBarang(ListToko &LT) {
         t = t->next;
     }
 }
+
+/* ===== Search ===== */
+Toko* findToko(ListToko &LT, string key) {
+    Toko* p = LT.head;
+    while (p != NULL) {
+        if (p->idToko == key || p->namaToko == key)
+            return p;
+        p = p->next;
+    }
+    return NULL;
+}
