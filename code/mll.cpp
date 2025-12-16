@@ -179,3 +179,14 @@ void deleteBarangFromToko(Toko* toko, string idBarang) {
     }
 }
 
+/* ===== Count ===== */
+int countBarangInToko(Toko* toko) {
+    int count = 0;
+    Relasi* r = toko->firstRelasi;
+    while (r != NULL) {
+        count++;
+        r = r->next;
+    }
+    return count;
+}
+
