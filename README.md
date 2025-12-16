@@ -48,3 +48,10 @@ Langkah-langkah menjalankan program menggunakan **Visual Studio Code**:
 4. Jalankan perintah berikut:
    ```bash
    g++ main.cpp mll.cpp -o penjualan
+
+---
+
+Program Data Penjualan ini diharapkan dapat membantu dalam memahami penerapan
+struktur data Multi Linked List pada kasus nyata, khususnya dalam pengelolaan
+data penjualan antara toko dan barang. Program ini masih dapat dikembangkan lebih
+lanjut sesuai kebutuhan.
