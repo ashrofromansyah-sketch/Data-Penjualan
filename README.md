@@ -27,3 +27,14 @@ Program ini terdiri dari tiga file utama:
 - `main.cpp` : Berisi program utama dan menu interaktif
 
 ---
+
+Fitur Program
+Fitur-fitur yang tersedia dalam program ini meliputi:
+- Menambahkan data toko
+- Menampilkan data toko
+- Menambahkan data barang
+- Menghubungkan toko dengan barang (data penjualan)
+- Menampilkan toko beserta barang yang dijual
+- Menghitung jumlah barang yang dimiliki oleh suatu toko
+
+---
