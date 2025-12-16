@@ -28,7 +28,7 @@ Program ini terdiri dari tiga file utama:
 
 ---
 
-Fitur Program
+##  Fitur Program
 Fitur-fitur yang tersedia dalam program ini meliputi:
 - Menambahkan data toko
 - Menampilkan data toko
@@ -38,3 +38,13 @@ Fitur-fitur yang tersedia dalam program ini meliputi:
 - Menghitung jumlah barang yang dimiliki oleh suatu toko
 
 ---
+
+##  Cara Menjalankan Program
+Langkah-langkah menjalankan program menggunakan **Visual Studio Code**:
+
+1. Pastikan compiler **g++** telah terinstal
+2. Buka folder project di **Visual Studio Code**
+3. Buka terminal pada VS Code (`Ctrl + ~`)
+4. Jalankan perintah berikut:
+   ```bash
+   g++ main.cpp mll.cpp -o penjualan
