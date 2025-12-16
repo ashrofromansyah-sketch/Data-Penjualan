@@ -33,3 +33,11 @@ struct ListToko {
     Toko* head;
     Toko* tail;
 };
+
+void createListToko(ListToko &LT);
+void createListBarang(ListBarang &LB);
+
+// Insert
+void insertFirstToko(ListToko &LT, string id, string nama);
+void insertLastToko(ListToko &LT, string id, string nama);
+void insertLastBarang(ListBarang &LB, string id, string nama);
