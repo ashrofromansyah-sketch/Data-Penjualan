@@ -41,3 +41,15 @@ void createListBarang(ListBarang &LB);
 void insertFirstToko(ListToko &LT, string id, string nama);
 void insertLastToko(ListToko &LT, string id, string nama);
 void insertLastBarang(ListBarang &LB, string id, string nama);
+
+// Tampil
+void showAllToko(ListToko &LT);
+void showTokoAndBarang(ListToko &LT);
+
+// Search
+Toko* findToko(ListToko &LT, string key);
+Barang* findBarang(ListBarang &LB, string key);
+void searchBarangInToko(Toko* toko, string key);
+
+// Relasi
+void addRelasi(Toko* toko, Barang* barang);
