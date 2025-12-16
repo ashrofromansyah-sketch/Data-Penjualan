@@ -56,3 +56,33 @@ void insertLastBarang(ListBarang &LB, string id, string nama) {
         LB.tail = newNode;
     }
 }
+
+/* ===== Tampil ===== */
+void showAllToko(ListToko &LT) {
+    Toko* p = LT.head;
+    if (p == NULL) {
+        cout << "List toko kosong\n";
+        return;
+    }
+
+    while (p != NULL) {
+        cout << "ID: " << p->idToko << " | Nama: " << p->namaToko << endl;
+        p = p->next;
+    }
+}
+
+void showTokoAndBarang(ListToko &LT) {
+    Toko* t = LT.head;
+    while (t != NULL) {
+        cout << "\nToko: " << t->idToko << " - " << t->namaToko << endl;
+        Relasi* r = t->firstRelasi;
+        if (r == NULL)
+            cout << "  (Tidak ada barang)\n";
+        while (r != NULL) {
+            cout << "  * " << r->barang->idBarang
+                 << " - " << r->barang->namaBarang << endl;
+            r = r->next;
+        }
+        t = t->next;
+    }
+}
