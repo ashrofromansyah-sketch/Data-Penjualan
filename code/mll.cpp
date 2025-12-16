@@ -97,3 +97,54 @@ Toko* findToko(ListToko &LT, string key) {
     }
     return NULL;
 }
+
+Barang* findBarang(ListBarang &LB, string key) {
+    Barang* p = LB.head;
+    while (p != NULL) {
+        if (p->idBarang == key || p->namaBarang == key)
+            return p;
+        p = p->next;
+    }
+    return NULL;
+}
+
+/* ===== Relasi ===== */
+void addRelasi(Toko* toko, Barang* barang) {
+    Relasi* r = toko->firstRelasi;
+    while (r != NULL) {
+        if (r->barang == barang)
+            return;
+        r = r->next;
+    }
+
+    Relasi* newRel = new Relasi;
+    newRel->barang = barang;
+    newRel->next = toko->firstRelasi;
+    toko->firstRelasi = newRel;
+}
+
+/* ===== Delete ===== */
+void deleteAllRelasi(Toko* toko) {
+    Relasi* r = toko->firstRelasi;
+    while (r != NULL) {
+        Relasi* del = r;
+        r = r->next;
+        delete del;
+    }
+    toko->firstRelasi = NULL;
+}
+
+void deleteToko(ListToko &LT, string id) {
+    Toko* cur = LT.head;
+    Toko* prev = NULL;
+
+    while (cur != NULL && cur->idToko != id) {
+        prev = cur;
+        cur = cur->next;
+    }
+
+    if (cur == NULL) {
+        cout << "Toko tidak ditemukan\n";
+        return;
+    }
+
