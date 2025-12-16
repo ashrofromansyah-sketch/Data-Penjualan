@@ -29,3 +29,31 @@ int main() {
         else if (choice == 2) {
             showAllToko(LT);
         }
+        else if (choice == 3) {
+            string id, nama;
+            cout << "ID Barang: "; getline(cin, id);
+            cout << "Nama Barang: "; getline(cin, nama);
+            insertLastBarang(LB, id, nama);
+        }
+        else if (choice == 4) {
+            string idT, idB;
+            cout << "ID Toko: "; getline(cin, idT);
+            cout << "ID Barang: "; getline(cin, idB);
+            addRelasi(findToko(LT, idT), findBarang(LB, idB));
+        }
+        else if (choice == 5) {
+            showTokoAndBarang(LT);
+        }
+        else if (choice == 6) {
+            string idT;
+            cout << "ID Toko: "; getline(cin, idT);
+            Toko* t = findToko(LT, idT);
+            if (t)
+                cout << "Jumlah Barang: " << countBarangInToko(t) << endl;
+        }
+
+    } while (choice != 0);
+
+    return 0;
+}
+
