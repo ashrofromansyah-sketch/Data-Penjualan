@@ -53,21 +53,20 @@ void insertFirstBarang(ListBarang &LB, string id, string nama);
 void showAllToko(ListToko &LT);
 void showAllBarang(ListBarang &LB);
 void showTokoAndBarang(ListToko &LT);
+void tokoMenjualBarang(ListToko &LT, string idBarang);
+void barangDijualToko(ListBarang &LB, string idToko);
 
 // Search
 Toko* findToko(ListToko &LT, string key);
 Barang* findBarang(ListBarang &LB, string key);
-//cari realasi child dari toko atau barang
+Relasi* findRelasi(Toko* toko, Barang* barang);
 void searchBarangInToko(Toko* toko, string key);
-
-//toko yang menjual barang tertentu
-void tokoMenjualBarang(ListToko &LT, string idBarang);
 
 // Relasi
 void addRelasi(Toko* toko, Barang* barang);
 
 // Delete
-void deleteRelasi(Toko* toko);
+void deleteRelasi(Toko* toko, Barang* barang);
 void deleteToko(ListToko &LT, string id);
 void deleteBarang(ListBarang &LB, string id);
 void deleteBarangFromToko(Toko* toko, string idBarang);
