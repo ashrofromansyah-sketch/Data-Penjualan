@@ -148,3 +148,34 @@ void deleteToko(ListToko &LT, string id) {
         return;
     }
 
+    if (prev == NULL)
+        LT.head = cur->next;
+    else
+        prev->next = cur->next;
+
+    if (LT.tail == cur)
+        LT.tail = prev;
+
+    deleteAllRelasi(cur);
+    delete cur;
+}
+
+void deleteBarangFromToko(Toko* toko, string idBarang) {
+    Relasi* r = toko->firstRelasi;
+    Relasi* prev = NULL;
+
+    while (r != NULL) {
+        if (r->barang->idBarang == idBarang) {
+            if (prev == NULL)
+                toko->firstRelasi = r->next;
+            else
+                prev->next = r->next;
+
+            delete r;
+            return;
+        }
+        prev = r;
+        r = r->next;
+    }
+}
+
