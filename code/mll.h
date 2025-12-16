@@ -1,38 +1,35 @@
 #ifndef MLL_H
 #define MLL_H
 
+#include <iostream>
 #include <string>
 using namespace std;
 
-//node toko
-struct Toko {
-    int id;
-    string nama;
-    Toko *next;
-};
-//node barang
+/* ===== Struktur Data ===== */
 struct Barang {
-    int id;
-    string nama;
-    string kategori; //misal: makanan, minuman, pembersih, perabot, dll
-    double harga;
-    Barang *next;
+    string idBarang;
+    string namaBarang;
+    Barang* next;
 };
 
 struct Relasi {
-    Toko *toko;
-    Barang *barang;
-    Relasi *next;
+    Barang* barang;
+    Relasi* next;
 };
 
-struct ListToko {
-    Toko *first;
+struct Toko {
+    string idToko;
+    string namaToko;
+    Toko* next;
+    Relasi* firstRelasi;
 };
 
 struct ListBarang {
-    Barang *first;
+    Barang* head;
+    Barang* tail;
 };
 
-struct ListRelasi {
-    Relasi *first;
+struct ListToko {
+    Toko* head;
+    Toko* tail;
 };
