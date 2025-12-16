@@ -53,3 +53,13 @@ void searchBarangInToko(Toko* toko, string key);
 
 // Relasi
 void addRelasi(Toko* toko, Barang* barang);
+
+// Delete
+void deleteAllRelasi(Toko* toko);
+void deleteToko(ListToko &LT, string id);
+void deleteBarangFromToko(Toko* toko, string idBarang);
+
+// Count
+int countBarangInToko(Toko* toko);
+
+#endif
