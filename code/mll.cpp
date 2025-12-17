@@ -118,7 +118,7 @@ void showTokoAndBarang(ListToko &LT) {
 }
 
 /* ===== Search ===== */
-Toko* findToko(ListToko &LT, string key) {
+Toko* findToko(LT, string key) {
     Toko* p = LT.head;
     while (p != NULL) {
         if (p->idToko == key || p->namaToko == key)
@@ -128,7 +128,7 @@ Toko* findToko(ListToko &LT, string key) {
     return NULL;
 }
 
-Barang* findBarang(ListBarang &LB, string key) {
+Barang* findBarang(LB, string key) {
     Barang* p = LB.head;
     while (p != NULL) {
         if (p->idBarang == key || p->namaBarang == key)
