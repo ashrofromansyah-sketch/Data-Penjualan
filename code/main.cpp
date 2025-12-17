@@ -33,7 +33,6 @@ int main() {
             cout << "Nama Toko: "; getline(cin, nama);
             cout << "Rating Toko: ";
             cin >> rating;
-            cin.ignore();
             if (rating < 0.0) rating = 0.0;
             if (rating > 5.0) rating = 5.0;
             cout << "Simpan di awal atau akhir? (f/l): "; getline(cin, pilih);
@@ -63,7 +62,6 @@ int main() {
             cout << "Nama Barang: "; getline(cin, nama);
             cout << "Harga Barang: ";
             cin >> harga;
-            cin.ignore();
             if (harga < 0) harga = 0;
             cout << "Simpan di awal atau akhir? (f/l): "; getline(cin, pilih);
             if (pilih == "f" || pilih == "F") {
