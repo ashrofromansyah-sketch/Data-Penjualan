@@ -29,6 +29,7 @@ void insertLastToko(ListToko &LT, string id, string nama) {
     Toko* newNode = new Toko;
     newNode->idToko = id;
     newNode->namaToko = nama;
+    newNode->ratingToko = 0.0;
     newNode->firstRelasi = NULL;
     newNode->next = NULL;
 
@@ -46,6 +47,8 @@ void insertLastBarang(ListBarang &LB, string id, string nama) {
     Barang* newNode = new Barang;
     newNode->idBarang = id;
     newNode->namaBarang = nama;
+    newNode->hargaBarang = 0;
+    newNode->firstRelasiBarang = NULL;
     newNode->next = NULL;
 
     if (LB.head == NULL) {
@@ -104,6 +107,16 @@ Barang* findBarang(ListBarang &LB, string key) {
         if (p->idBarang == key || p->namaBarang == key)
             return p;
         p = p->next;
+    }
+    return NULL;
+}
+
+Relasi* findRelasi(Toko* toko, Barang* barang) {
+    Relasi* r = toko->firstRelasi;
+    while (r != NULL) {
+        if (r->barang == barang)
+            return r;
+        r = r->next;
     }
     return NULL;
 }
