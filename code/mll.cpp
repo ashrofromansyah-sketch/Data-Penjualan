@@ -16,7 +16,7 @@ void insertFirstToko(ListToko &LT, string id, string nama) {
     Toko* newNode = new Toko;
     newNode->idToko = id;
     newNode->namaToko = nama;
-    newNode->firstRelasi = NULL;
+    newNode->firstRelasiToko = NULL;
     newNode->next = LT.head;
 
     if (LT.head == NULL)
@@ -30,7 +30,7 @@ void insertLastToko(ListToko &LT, string id, string nama) {
     newNode->idToko = id;
     newNode->namaToko = nama;
     newNode->ratingToko = 0.0;
-    newNode->firstRelasi = NULL;
+    newNode->firstRelasiToko = NULL;
     newNode->next = NULL;
 
     if (LT.head == NULL) {
@@ -78,13 +78,13 @@ void showTokoAndBarang(ListToko &LT) {
     Toko* t = LT.head;
     while (t != NULL) {
         cout << "\nToko: " << t->idToko << " - " << t->namaToko << endl;
-        Relasi* r = t->firstRelasi;
+        Relasi* r = t->firstRelasiToko;
         if (r == NULL)
             cout << "  (Tidak ada barang)\n";
         while (r != NULL) {
             cout << "  * " << r->barang->idBarang
                  << " - " << r->barang->namaBarang << endl;
-            r = r->next;
+            r = r->nextRelasiToko;
         }
         t = t->next;
     }
@@ -201,21 +201,21 @@ void deleteToko(ListToko &LT, string id) {
 }
 
 void deleteBarangFromToko(Toko* toko, string idBarang) {
-    Relasi* r = toko->firstRelasi;
+    Relasi* r = toko->firstRelasiToko;
     Relasi* prev = NULL;
 
     while (r != NULL) {
         if (r->barang->idBarang == idBarang) {
             if (prev == NULL)
-                toko->firstRelasi = r->next;
+                toko->firstRelasiToko = r->nextRelasiToko;
             else
-                prev->next = r->next;
+                prev->nextRelasiToko = r->nextRelasiToko;
 
             delete r;
             return;
         }
         prev = r;
-        r = r->next;
+        r = r->nextRelasiToko;
     }
 }
 
