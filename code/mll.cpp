@@ -87,6 +87,20 @@ void showAllToko(ListToko &LT) {
     }
 }
 
+void showAllBarang(ListBarang &LB) {
+    Barang* p = LB.head;
+    if (p == NULL) {
+        cout << "List barang kosong\n";
+        return;
+    }
+
+    while (p != NULL) {
+        cout << "ID: " << p->idBarang << " | Nama: " << p->namaBarang
+             << " | Harga: " << p->hargaBarang << endl;
+        p = p->next;
+    }
+}
+
 void showTokoAndBarang(ListToko &LT) {
     Toko* t = LT.head;
     while (t != NULL) {
@@ -213,21 +227,67 @@ void deleteToko(ListToko &LT, string id) {
     delete cur;
 }
 
-void deleteBarangFromToko(Toko* toko, string idBarang) {
-    Relasi* r = toko->firstRelasiToko;
-    Relasi* prev = NULL;
+void deleteBarang(ListBarang &LB, string id) {
+    Barang* cur = LB.head;
+    Barang* prev = NULL;
 
+    while (cur != NULL && cur->idBarang != id) {
+        prev = cur;
+        cur = cur->next;
+    }
+
+    if (cur == NULL) {
+        cout << "Barang tidak ditemukan\n";
+        return;
+    }
+
+    while (cur->firstRelasiBarang != NULL) {
+        deleteRelasi(cur->firstRelasiBarang->toko, cur);
+    }
+
+    if (prev == NULL)
+        LB.head = cur->next;
+    else
+        prev->next = cur->next;
+
+    if (LB.tail == cur)
+        LB.tail = prev;
+
+    delete cur;
+}
+
+void tokoMenjualBarang(ListToko &LT, string idBarang) {
+    Barang* b = findBarang(LT.head, idBarang);
+    if (b == NULL) {
+        cout << "Barang tidak ditemukan\n";
+        return;
+    }  
+    Relasi* r = b->firstRelasiBarang;
+    if (r == NULL) {
+        cout << "Tidak ada toko yang menjual barang ini\n";
+        return;
+    }
+    cout << "Toko yang menjual barang " << b->namaBarang << ":\n";
     while (r != NULL) {
-        if (r->barang->idBarang == idBarang) {
-            if (prev == NULL)
-                toko->firstRelasiToko = r->nextRelasiToko;
-            else
-                prev->nextRelasiToko = r->nextRelasiToko;
+        cout << "- " << r->toko->namaToko << endl;
+        r = r->nextRelasiBarang;
+    }
+}
 
-            delete r;
-            return;
-        }
-        prev = r;
+void barangDijualToko(ListBarang &LB, string idToko) {
+    Toko* t = findToko(LB.head, idToko);
+    if (t == NULL) {
+        cout << "Toko tidak ditemukan\n";
+        return;
+    }  
+    Relasi* r = t->firstRelasiToko;
+    if (r == NULL) {
+        cout << "Toko ini tidak menjual barang apapun\n";
+        return;
+    }
+    cout << "Barang yang dijual oleh toko " << t->namaToko << ":\n";
+    while (r != NULL) {
+        cout << "- " << r->barang->namaBarang << endl;
         r = r->nextRelasiToko;
     }
 }
