@@ -15,6 +15,11 @@ int main() {
         cout << "4. Buat Relasi Toko & Barang\n";
         cout << "5. Tampilkan Toko & Barang\n";
         cout << "6. Hitung Barang di Toko\n";
+        cout << "7. Cari Toko atau Barang\n";
+        cout << "8. Toko Menjual Barang\n";
+        cout << "9. Barang Dijual di Toko\n";
+        cout << "10. Hapus Toko atau Barang\n";
+        cout << "11. Hapus Relasi Toko & Barang\n";
         cout << "0. Keluar\n";
         cout << "Pilih: ";
         cin >> choice;
