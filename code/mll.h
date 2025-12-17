@@ -54,7 +54,7 @@ void showAllToko(ListToko &LT);
 void showAllBarang(ListBarang &LB);
 void showTokoAndBarang(ListToko &LT);
 void tokoMenjualBarang(ListToko &LT, string idBarang);
-void barangDijualToko(ListBarang &LB, string idToko);
+void barangDijualToko(ListToko &LT, string idToko);
 
 // Search
 Toko* findToko(ListToko &LT, string key);

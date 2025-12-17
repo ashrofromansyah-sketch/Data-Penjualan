@@ -138,7 +138,7 @@ int main() {
         else if (choice == 10) {
             string idT;
             cout << "ID Toko: "; getline(cin, idT);
-            barangDijualToko(LB, idT);
+            barangDijualToko(LT, idT);
         }
         else if (choice == 11) {
             string pilih, id;
