@@ -2,13 +2,11 @@
 
 /* ===== Inisialisasi ===== */
 void createListToko(ListToko &LT) {
-    LT.head = NULL;
-    LT.tail = NULL;
+    LT.head = LT.tail = NULL;
 }
 
 void createListBarang(ListBarang &LB) {
-    LB.head = NULL;
-    LB.tail = NULL;
+    LB.head = LB.tail = NULL;
 }
 
 /* ===== Insert Toko ===== */
