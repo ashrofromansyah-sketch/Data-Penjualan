@@ -185,6 +185,10 @@ void deleteToko(ListToko &LT, string id) {
         return;
     }
 
+    while (cur->firstRelasiToko != NULL) {
+        deleteRelasi(cur, cur->firstRelasiToko->barang);
+    }
+
     if (prev == NULL)
         LT.head = cur->next;
     else
@@ -193,7 +197,6 @@ void deleteToko(ListToko &LT, string id) {
     if (LT.tail == cur)
         LT.tail = prev;
 
-    deleteAllRelasi(cur);
     delete cur;
 }
 
@@ -219,10 +222,10 @@ void deleteBarangFromToko(Toko* toko, string idBarang) {
 /* ===== Count ===== */
 int countBarangInToko(Toko* toko) {
     int count = 0;
-    Relasi* r = toko->firstRelasi;
+    Relasi* r = toko->firstRelasiToko;
     while (r != NULL) {
         count++;
-        r = r->next;
+        r = r->nextRelasiToko;
     }
     return count;
 }
