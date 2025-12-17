@@ -31,14 +31,16 @@ int main() {
             double rating;
             cout << "ID Toko: "; getline(cin, id);
             cout << "Nama Toko: "; getline(cin, nama);
-            cout << "Rating Toko: "; getline(cin, rating);
+            cout << "Rating Toko: ";
+            cin >> rating;
+            cin.ignore();
             if (rating < 0.0) rating = 0.0;
             if (rating > 5.0) rating = 5.0;
             cout << "Simpan di awal atau akhir? (f/l): "; getline(cin, pilih);
             if (pilih == "f" || pilih == "F") {
-                insertFirstToko(LT, id, nama, rating);
+                insertFirstToko(LT, id, rating, nama);
             } else if (pilih == "l" || pilih == "L") {
-                insertLastToko(LT, id, nama, rating);
+                insertLastToko(LT, id, rating, nama);
             } else {
                 cout << "Pilihan tidak valid\n";
             }
