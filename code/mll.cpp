@@ -118,7 +118,7 @@ void showTokoAndBarang(ListToko &LT) {
 }
 
 /* ===== Search ===== */
-Toko* findToko(LT, string key) {
+Toko* findToko(ListToko &LT, string key) {
     Toko* p = LT.head;
     while (p != NULL) {
         if (p->idToko == key || p->namaToko == key)
@@ -128,7 +128,7 @@ Toko* findToko(LT, string key) {
     return NULL;
 }
 
-Barang* findBarang(LB, string key) {
+Barang* findBarang(ListBarang &LB, string key) {
     Barang* p = LB.head;
     while (p != NULL) {
         if (p->idBarang == key || p->namaBarang == key)
@@ -257,25 +257,28 @@ void deleteBarang(ListBarang &LB, string id) {
 }
 
 void tokoMenjualBarang(ListToko &LT, string idBarang) {
-    Barang* b = findBarang(LT.head, idBarang);
-    if (b == NULL) {
-        cout << "Barang tidak ditemukan\n";
-        return;
-    }  
-    Relasi* r = b->firstRelasiBarang;
-    if (r == NULL) {
-        cout << "Tidak ada toko yang menjual barang ini\n";
-        return;
+    Toko* t = LT.head;
+    bool found = false;
+
+    while (t != NULL) {
+        Relasi* r = t->firstRelasiToko;
+        while (r != NULL) {
+            if (r->barang->idBarang == idBarang) {
+                cout << "Toko: " << t->namaToko << endl;
+                found = true;
+                break;
+            }
+            r = r->nextRelasiToko;
+        }
+        t = t->next;
     }
-    cout << "Toko yang menjual barang " << b->namaBarang << ":\n";
-    while (r != NULL) {
-        cout << "- " << r->toko->namaToko << endl;
-        r = r->nextRelasiBarang;
-    }
+
+    if (!found)
+        cout << "Tidak ada toko yang menjual barang tersebut\n";
 }
 
-void barangDijualToko(ListBarang &LB, string idToko) {
-    Toko* t = findToko(LB.head, idToko);
+void barangDijualToko(ListToko &LT, string idToko) {
+    Toko* t = findToko(LT, idToko);
     if (t == NULL) {
         cout << "Toko tidak ditemukan\n";
         return;
