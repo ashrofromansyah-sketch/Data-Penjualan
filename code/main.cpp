@@ -10,9 +10,9 @@ int main() {
     do {
         cout << "\n=== MENU DATA PENJUALAN ===\n";
         cout << "1. Insert Toko\n";
-        cout << "2. Tampilkan Toko\n";
+        cout << "2. Tampilkan Toko atau Barang\n";
         cout << "3. Insert Barang\n";
-        cout << "4. Hubungkan Toko & Barang\n";
+        cout << "4. Buat Relasi Toko & Barang\n";
         cout << "5. Tampilkan Toko & Barang\n";
         cout << "6. Hitung Barang di Toko\n";
         cout << "0. Keluar\n";
@@ -21,33 +21,48 @@ int main() {
         cin.ignore();
 
         if (choice == 1) {
-            string id, nama;
+            string id, nama, pilih;
             double rating;
-            string pilih;
             cout << "ID Toko: "; getline(cin, id);
             cout << "Nama Toko: "; getline(cin, nama);
-            cout << "Rating Toko: ";
-            cin >> rating; cin.ignore();
+            cout << "Rating Toko: "; getline(cin, rating);
             if (rating < 0.0) rating = 0.0;
             if (rating > 5.0) rating = 5.0;
-            cout << "Simpan di awal atau akhir? (a/e): ";
-            getline(cin, pilih);
-            if (pilih == "a" || pilih == "A") {
+            cout << "Simpan di awal atau akhir? (f/l): "; getline(cin, pilih);
+            if (pilih == "f" || pilih == "F") {
                 insertFirstToko(LT, id, nama, rating);
-            } else if (pilih == "e" || pilih == "E") {
-            insertLastToko(LT, id, nama, rating);
+            } else if (pilih == "l" || pilih == "L") {
+                insertLastToko(LT, id, nama, rating);
             } else {
                 cout << "Pilihan tidak valid\n";
             }
         }
         else if (choice == 2) {
-            showAllToko(LT);
+            string pilih;
+            cout << "Tampilkan Toko atau Barang? (t/b): "; getline(cin, pilih);
+            if (pilih == "t" || pilih == "T") {
+                showAllToko(LT);
+            } else if (pilih == "b" || pilih == "B") {
+                showAllBarang(LB);
+            } else {
+                cout << "Pilihan tidak valid\n";
+            }
         }
         else if (choice == 3) {
-            string id, nama;
+            string id, nama, pilih;
+            int harga;
             cout << "ID Barang: "; getline(cin, id);
             cout << "Nama Barang: "; getline(cin, nama);
-            insertLastBarang(LB, id, nama);
+            cout << "Harga Barang: "; getline(cin, harga);
+            if (harga < 0) harga = 0;
+            cout << "Simpan di awal atau akhir? (f/l): "; getline(cin, pilih);
+            if (pilih == "f" || pilih == "F") {
+                insertFirstBarang(LB, id, nama, harga);
+            } else if (pilih == "l" || pilih == "L") {
+                insertLastBarang(LB, id, nama, harga);
+            } else {
+                cout << "Pilihan tidak valid\n";
+            }
         }
         else if (choice == 4) {
             string idT, idB;
