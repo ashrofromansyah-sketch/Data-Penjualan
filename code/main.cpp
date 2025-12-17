@@ -22,9 +22,23 @@ int main() {
 
         if (choice == 1) {
             string id, nama;
+            double rating;
+            string pilih;
             cout << "ID Toko: "; getline(cin, id);
             cout << "Nama Toko: "; getline(cin, nama);
-            insertLastToko(LT, id, nama);
+            cout << "Rating Toko: ";
+            cin >> rating; cin.ignore();
+            if (rating < 0.0) rating = 0.0;
+            if (rating > 5.0) rating = 5.0;
+            cout << "Simpan di awal atau akhir? (a/e): ";
+            getline(cin, pilih);
+            if (pilih == "a" || pilih == "A") {
+                insertFirstToko(LT, id, nama, rating);
+            } else if (pilih == "e" || pilih == "E") {
+            insertLastToko(LT, id, nama, rating);
+            } else {
+                cout << "Pilihan tidak valid\n";
+            }
         }
         else if (choice == 2) {
             showAllToko(LT);
