@@ -12,14 +12,15 @@ int main() {
         cout << "1. Insert Toko\n";
         cout << "2. Tampilkan Toko atau Barang\n";
         cout << "3. Insert Barang\n";
-        cout << "4. Buat Relasi Toko & Barang\n";
+        cout << "4. Buat Relasi\n";
         cout << "5. Tampilkan Toko & Barang\n";
         cout << "6. Hitung Barang di Toko\n";
         cout << "7. Cari Toko atau Barang\n";
-        cout << "8. Toko Menjual Barang\n";
-        cout << "9. Barang Dijual di Toko\n";
-        cout << "10. Hapus Toko atau Barang\n";
-        cout << "11. Hapus Relasi Toko & Barang\n";
+        cout << "8. Cari Relasi\n";
+        cout << "9. Toko Menjual Barang\n";
+        cout << "10. Barang Dijual di Toko\n";
+        cout << "11. Hapus Toko atau Barang\n";
+        cout << "12. Hapus Relasi Toko & Barang\n";
         cout << "0. Keluar\n";
         cout << "Pilih: ";
         cin >> choice;
@@ -89,6 +90,77 @@ int main() {
             Toko* t = findToko(LT, idT);
             if (t)
                 cout << "Jumlah Barang: " << countBarangInToko(t) << endl;
+        }
+        else if (choice == 7) {
+            string pilih, key;
+            cout << "Cari Toko atau Barang? (t/b): "; getline(cin, pilih);
+            if (pilih == "t" || pilih == "T") {
+                cout << "ID Toko: "; getline(cin, key);
+                Toko* t = findToko(LT, key);
+                if (t)
+                    cout << "Toko Ditemukan: " << t->namaToko << endl;
+                else
+                    cout << "Toko tidak ditemukan\n";
+            } else if (pilih == "b" || pilih == "B") {
+                cout << "ID Barang: "; getline(cin, key);
+                Barang* b = findBarang(LB, key);
+                if (b)
+                    cout << "Barang Ditemukan: " << b->namaBarang << endl;
+                else
+                    cout << "Barang tidak ditemukan\n";
+            } else {
+                cout << "Pilihan tidak valid\n";
+            }
+        }
+        else if (choice == 8) {
+            string idT, idB;
+            cout << "ID Toko: "; getline(cin, idT);
+            cout << "ID Barang: "; getline(cin, idB);
+            Toko* t = findToko(LT, idT);
+            Barang* b = findBarang(LB, idB);
+            if (t && b) {
+                Relasi* r = findRelasi(t, b);
+                if (r)
+                    cout << "Relasi Ditemukan\n";
+                else
+                    cout << "Relasi tidak ditemukan\n";
+            } else {
+                cout << "Toko atau Barang tidak ditemukan\n";
+            }
+        }
+        else if (choice == 9) {
+            string idB;
+            cout << "ID Barang: "; getline(cin, idB);
+            tokoMenjualBarang(LT, idB);
+        }
+        else if (choice == 10) {
+            string idT;
+            cout << "ID Toko: "; getline(cin, idT);
+            barangDijualToko(LB, idT);
+        }
+        else if (choice == 11) {
+            string pilih, id;
+            cout << "Hapus Toko atau Barang? (t/b): "; getline(cin, pilih);
+            if (pilih == "t" || pilih == "T") {
+                cout << "ID Toko: "; getline(cin, id);
+                deleteToko(LT, id);
+            } else if (pilih == "b" || pilih == "B") {
+                cout << "ID Barang: "; getline(cin, id);
+                deleteBarang(LB, id);
+            } else {
+                cout << "Pilihan tidak valid\n";
+            }
+        }
+        else if (choice == 12) {
+            string idT, idB;
+            cout << "ID Toko: "; getline(cin, idT);
+            cout << "ID Barang: "; getline(cin, idB);
+            Toko* t = findToko(LT, idT);
+            Barang* b = findBarang(LB, idB);
+            if (t && b)
+                deleteRelasi(t, b);
+            else
+                cout << "Toko atau Barang tidak ditemukan\n";
         }
 
     } while (choice != 0);
