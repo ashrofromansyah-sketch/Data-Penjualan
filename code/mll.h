@@ -44,10 +44,10 @@ void createListToko(ListToko &LT);
 void createListBarang(ListBarang &LB);
 
 // Insert
-void insertFirstToko(ListToko &LT, string id, string nama);
-void insertLastToko(ListToko &LT, string id, string nama);
-void insertLastBarang(ListBarang &LB, string id, string nama);
-void insertFirstBarang(ListBarang &LB, string id, string nama);
+void insertFirstToko(ListToko &LT, string id, double rating, string nama);
+void insertLastToko(ListToko &LT, string id, double rating, string nama);
+void insertLastBarang(ListBarang &LB, string id, int harga, string nama);
+void insertFirstBarang(ListBarang &LB, string id, int harga, string nama);
 
 // Tampil
 void showAllToko(ListToko &LT);
@@ -69,7 +69,6 @@ void addRelasi(Toko* toko, Barang* barang);
 void deleteRelasi(Toko* toko, Barang* barang);
 void deleteToko(ListToko &LT, string id);
 void deleteBarang(ListBarang &LB, string id);
-void deleteBarangFromToko(Toko* toko, string idBarang);
 
 // Count
 int countBarangInToko(Toko* toko);
