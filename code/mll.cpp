@@ -112,28 +112,29 @@ Barang* findBarang(ListBarang &LB, string key) {
 }
 
 Relasi* findRelasi(Toko* toko, Barang* barang) {
-    Relasi* r = toko->firstRelasi;
+    Relasi* r = toko->firstRelasiToko;
     while (r != NULL) {
         if (r->barang == barang)
             return r;
-        r = r->next;
+        r = r->nextRelasiToko;
     }
     return NULL;
 }
 
 /* ===== Relasi ===== */
 void addRelasi(Toko* toko, Barang* barang) {
-    Relasi* r = toko->firstRelasi;
-    while (r != NULL) {
-        if (r->barang == barang)
-            return;
-        r = r->next;
-    }
+    if (toko == NULL || barang == NULL) return;
+    if (findRelasi(toko, barang) != NULL) return;
 
-    Relasi* newRel = new Relasi;
-    newRel->barang = barang;
-    newRel->next = toko->firstRelasi;
-    toko->firstRelasi = newRel;
+    Relasi* r = new Relasi;
+    r->toko = toko;
+    r->barang = barang;
+
+    r->nextRelasiToko = toko->firstRelasiToko;
+    toko->firstRelasiToko = r;
+
+    r->nextRelasiBarang = barang->firstRelasiBarang;
+    barang->firstRelasiBarang = r;
 }
 
 /* ===== Delete ===== */
