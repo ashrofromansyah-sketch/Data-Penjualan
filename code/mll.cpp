@@ -12,10 +12,11 @@ void createListBarang(ListBarang &LB) {
 }
 
 /* ===== Insert Toko ===== */
-void insertFirstToko(ListToko &LT, string id, string nama) {
+void insertFirstToko(ListToko &LT, string id, double rating, string nama) {
     Toko* newNode = new Toko;
     newNode->idToko = id;
     newNode->namaToko = nama;
+    newNode->ratingToko = rating;
     newNode->firstRelasiToko = NULL;
     newNode->next = LT.head;
 
@@ -25,11 +26,11 @@ void insertFirstToko(ListToko &LT, string id, string nama) {
     LT.head = newNode;
 }
 
-void insertLastToko(ListToko &LT, string id, string nama) {
+void insertLastToko(ListToko &LT, string id, double rating, string nama) {
     Toko* newNode = new Toko;
     newNode->idToko = id;
     newNode->namaToko = nama;
-    newNode->ratingToko = 0.0;
+    newNode->ratingToko = rating;
     newNode->firstRelasiToko = NULL;
     newNode->next = NULL;
 
@@ -43,11 +44,11 @@ void insertLastToko(ListToko &LT, string id, string nama) {
 }
 
 /* ===== Insert Barang ===== */
-void insertLastBarang(ListBarang &LB, string id, string nama) {
+void insertLastBarang(ListBarang &LB, string id, int harga, string nama) {
     Barang* newNode = new Barang;
     newNode->idBarang = id;
     newNode->namaBarang = nama;
-    newNode->hargaBarang = 0;
+    newNode->hargaBarang = harga;
     newNode->firstRelasiBarang = NULL;
     newNode->next = NULL;
 
@@ -58,6 +59,20 @@ void insertLastBarang(ListBarang &LB, string id, string nama) {
         LB.tail->next = newNode;
         LB.tail = newNode;
     }
+}
+
+void insertFirstBarang(ListBarang &LB, string id, int harga, string nama) {
+    Barang* newNode = new Barang;
+    newNode->idBarang = id;
+    newNode->namaBarang = nama;
+    newNode->hargaBarang = harga;
+    newNode->firstRelasiBarang = NULL;
+    newNode->next = LB.head;
+
+    if (LB.head == NULL)
+        LB.tail = newNode;
+
+    LB.head = newNode;
 }
 
 /* ===== Tampil ===== */
