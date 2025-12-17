@@ -39,7 +39,12 @@ int main() {
             string idT, idB;
             cout << "ID Toko: "; getline(cin, idT);
             cout << "ID Barang: "; getline(cin, idB);
-            addRelasi(findToko(LT, idT), findBarang(LB, idB));
+            Toko* t = findToko(LT, idT);
+            Barang* b = findBarang(LB, idB);
+            if (t && b)
+                addRelasi(t, b);
+            else
+                cout << "Toko atau Barang tidak ditemukan\n";
         }
         else if (choice == 5) {
             showTokoAndBarang(LT);
