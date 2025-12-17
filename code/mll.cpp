@@ -138,14 +138,37 @@ void addRelasi(Toko* toko, Barang* barang) {
 }
 
 /* ===== Delete ===== */
-void deleteAllRelasi(Toko* toko) {
-    Relasi* r = toko->firstRelasi;
-    while (r != NULL) {
-        Relasi* del = r;
-        r = r->next;
-        delete del;
+void deleteRelasi(Toko* toko, Barang* barang) {
+    if (toko == NULL || barang == NULL) return;
+
+    Relasi *r, *prev;
+
+    r = toko->firstRelasiToko;
+    prev = NULL;
+    while (r != NULL && r->barang != barang) {
+        prev = r;
+        r = r->nextRelasiToko;
     }
-    toko->firstRelasi = NULL;
+    if (r == NULL) return;
+
+    if (prev == NULL)
+        toko->firstRelasiToko = r->nextRelasiToko;
+    else
+        prev->nextRelasiToko = r->nextRelasiToko;
+
+    prev = NULL;
+    Relasi* rb = barang->firstRelasiBarang;
+    while (rb != NULL && rb != r) {
+        prev = rb;
+        rb = rb->nextRelasiBarang;
+    }
+
+    if (prev == NULL)
+        barang->firstRelasiBarang = rb->nextRelasiBarang;
+    else
+        prev->nextRelasiBarang = rb->nextRelasiBarang;
+
+    delete r;
 }
 
 void deleteToko(ListToko &LT, string id) {
