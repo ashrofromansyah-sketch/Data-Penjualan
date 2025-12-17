@@ -10,8 +10,8 @@ struct Barang {
     string idBarang;
     string namaBarang;
     int hargaBarang;
-    Barang* next;
-    struct Relasi* firstRelasiBarang;
+    Barang* next;                        // Menunjuk ke node barang berikutnya
+    struct Relasi* firstRelasiBarang;    // Menunjuk ke relasi pertama yang melibatkan barang
 };
 
 struct Toko {
@@ -31,7 +31,7 @@ struct Relasi {
 
 //list
 struct ListBarang {
-    Barang* head;
+    Barang* head;            
     Barang* tail;
 };
 
