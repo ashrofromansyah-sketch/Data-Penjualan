@@ -14,19 +14,19 @@ struct Barang {
     struct Relasi* firstRelasiBarang;
 };
 
-struct Relasi {
-    Toko* toko;
-    Barang* barang;
-    Relasi* nextRelasiToko;
-    Relasi* nextRelasiBarang;
-};
-
 struct Toko {
     string idToko;
     string namaToko;
     double ratingToko;
     Toko* next;
     struct Relasi* firstRelasiToko;
+};
+
+struct Relasi {
+    Toko* toko;
+    Barang* barang;
+    Relasi* nextRelasiToko;
+    Relasi* nextRelasiBarang;
 };
 
 //list
