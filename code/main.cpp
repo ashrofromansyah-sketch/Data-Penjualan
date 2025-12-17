@@ -59,13 +59,15 @@ int main() {
             int harga;
             cout << "ID Barang: "; getline(cin, id);
             cout << "Nama Barang: "; getline(cin, nama);
-            cout << "Harga Barang: "; getline(cin, harga);
+            cout << "Harga Barang: ";
+            cin >> harga;
+            cin.ignore();
             if (harga < 0) harga = 0;
             cout << "Simpan di awal atau akhir? (f/l): "; getline(cin, pilih);
             if (pilih == "f" || pilih == "F") {
-                insertFirstBarang(LB, id, nama, harga);
+                insertFirstBarang(LB, id, harga, nama);
             } else if (pilih == "l" || pilih == "L") {
-                insertLastBarang(LB, id, nama, harga);
+                insertLastBarang(LB, id, harga, nama);
             } else {
                 cout << "Pilihan tidak valid\n";
             }
