@@ -60,7 +60,7 @@ void barangDijualToko(ListToko &LT, string idToko);
 Toko* findToko(ListToko &LT, string key);
 Barang* findBarang(ListBarang &LB, string key);
 Relasi* findRelasi(Toko* toko, Barang* barang);
-void searchBarangInToko(Toko* toko, string key);
+
 
 // Relasi
 void addRelasi(Toko* toko, Barang* barang);
