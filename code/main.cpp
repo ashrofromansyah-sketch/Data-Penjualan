@@ -29,21 +29,30 @@ int main() {
         if (choice == 1) {
             string id, nama, pilih;
             double rating;
+            
             cout << "ID Toko: "; getline(cin, id);
             cout << "Nama Toko: "; getline(cin, nama);
             cout << "Rating Toko: ";
             cin >> rating;
             cin.ignore();
+            
             if (rating < 0.0) rating = 0.0;
             if (rating > 5.0) rating = 5.0;
+           
             cout << "Simpan di awal atau akhir? (f/l): "; getline(cin, pilih);
             if (pilih == "f" || pilih == "F") {
                 insertFirstToko(LT, id, rating, nama);
+                 cout << "\✔ Toko berhasil ditambahkan di AWAl\n";
             } else if (pilih == "l" || pilih == "L") {
                 insertLastToko(LT, id, rating, nama);
+                 cout << "\✔ Toko berhasil ditambahkan di AWAl\n";
             } else {
                 cout << "Pilihan tidak valid\n";
+                continue;
             }
+
+            cout << "\n=== DATA TOKO TERKINI ===\n";
+            showAllToko(LT);
         }
         else if (choice == 2) {
             string pilih;
@@ -171,5 +180,6 @@ int main() {
 
     return 0;
 }
+
 
 
