@@ -71,19 +71,24 @@ int main() {
         else if (choice == 3) {
             string id, nama, pilih;
             int harga;
+            
             cout << "ID Barang: "; getline(cin, id);
             cout << "Nama Barang: "; getline(cin, nama);
             cout << "Harga Barang: ";
             cin >> harga;
             cin.ignore();
+            
             if (harga < 0) harga = 0;
             cout << "Simpan di awal atau akhir? (f/l): "; getline(cin, pilih);
             if (pilih == "f" || pilih == "F") {
                 insertFirstBarang(LB, id, harga, nama);
+                cout << "\n✔ Barang berhasil ditambahkan di AWAL\n";
             } else if (pilih == "l" || pilih == "L") {
                 insertLastBarang(LB, id, harga, nama);
+                cout << "\n✔ Barang berhasil ditambahkan di AKHIR\n";
             } else {
                 cout << "Pilihan tidak valid\n";
+                continue;
             }
         }
         else if (choice == 4) {
@@ -183,6 +188,7 @@ int main() {
 
     return 0;
 }
+
 
 
 
