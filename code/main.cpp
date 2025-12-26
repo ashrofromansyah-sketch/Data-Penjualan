@@ -82,10 +82,10 @@ int main() {
             cout << "Simpan di awal atau akhir? (f/l): "; getline(cin, pilih);
             if (pilih == "f" || pilih == "F") {
                 insertFirstBarang(LB, id, harga, nama);
-                cout << "\n✔ Barang berhasil ditambahkan di AWAL\n";
+                cout << "\n Barang berhasil ditambahkan di AWAL\n";
             } else if (pilih == "l" || pilih == "L") {
                 insertLastBarang(LB, id, harga, nama);
-                cout << "\n✔ Barang berhasil ditambahkan di AKHIR\n";
+                cout << "\n Barang berhasil ditambahkan di AKHIR\n";
             } else {
                 cout << "Pilihan tidak valid\n";
                 continue;
@@ -95,22 +95,32 @@ int main() {
             string idT, idB;
             cout << "ID Toko: "; getline(cin, idT);
             cout << "ID Barang: "; getline(cin, idB);
+            
             Toko* t = findToko(LT, idT);
             Barang* b = findBarang(LB, idB);
+            
             if (t && b)
                 addRelasi(t, b);
+                cout << "\n Relasi berhasil dibuat\n;
             else
                 cout << "Toko atau Barang tidak ditemukan\n";
         }
         else if (choice == 5) {
+            cout << "\n=== TOKO & BARANG YANG DIJUAL ===\n";
             showTokoAndBarang(LT);
         }
         else if (choice == 6) {
             string idT;
             cout << "ID Toko: "; getline(cin, idT);
+            
             Toko* t = findToko(LT, idT);
-            if (t)
-                cout << "Jumlah Barang: " << countBarangInToko(t) << endl;
+            if (t) {
+                cout << "Jumlah Barang di Toko "
+                     << t->namaToko << " : "
+                     << countBarangInToko(t) << endl;
+            } else {
+                cout << " Toko tidak ditemukan\n";
+            }
         }
         else if (choice == 7) {
             string pilih, key;
@@ -188,6 +198,7 @@ int main() {
 
     return 0;
 }
+
 
 
 
