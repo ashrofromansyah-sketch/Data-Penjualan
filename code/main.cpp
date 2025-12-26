@@ -57,9 +57,12 @@ int main() {
         else if (choice == 2) {
             string pilih;
             cout << "Tampilkan Toko atau Barang? (t/b): "; getline(cin, pilih);
+           
             if (pilih == "t" || pilih == "T") {
+                cout << "\n=== DAFTAR TOKO ===\n";
                 showAllToko(LT);
             } else if (pilih == "b" || pilih == "B") {
+                cout << "\n=== DAFTAR BARANG ===\n";
                 showAllBarang(LB);
             } else {
                 cout << "Pilihan tidak valid\n";
@@ -180,6 +183,7 @@ int main() {
 
     return 0;
 }
+
 
 
 
