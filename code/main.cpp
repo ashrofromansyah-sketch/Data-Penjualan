@@ -125,6 +125,7 @@ int main() {
         else if (choice == 7) {
             string pilih, key;
             cout << "Cari Toko atau Barang? (t/b): "; getline(cin, pilih);
+            
             if (pilih == "t" || pilih == "T") {
                 cout << "ID Toko: "; getline(cin, key);
                 Toko* t = findToko(LT, key);
@@ -147,8 +148,10 @@ int main() {
             string idT, idB;
             cout << "ID Toko: "; getline(cin, idT);
             cout << "ID Barang: "; getline(cin, idB);
+            
             Toko* t = findToko(LT, idT);
             Barang* b = findBarang(LB, idB);
+            
             if (t && b) {
                 Relasi* r = findRelasi(t, b);
                 if (r)
@@ -162,24 +165,27 @@ int main() {
         else if (choice == 9) {
             string idB;
             cout << "ID Barang: "; getline(cin, idB);
+            cout << "\n=== TOKO YANG MENJUAL BARANG ===\n";
             tokoMenjualBarang(LT, idB);
         }
         else if (choice == 10) {
             string idT;
             cout << "ID Toko: "; getline(cin, idT);
+            cout << "\n=== BARANG YANG DIJUAL TOKO ===\n";
             barangDijualToko(LT, idT);
         }
         else if (choice == 11) {
             string pilih, id;
             cout << "Hapus Toko atau Barang? (t/b): "; getline(cin, pilih);
+            
             if (pilih == "t" || pilih == "T") {
                 cout << "ID Toko: "; getline(cin, id);
                 deleteToko(LT, id);
+                cout << ">> Proses hapus toko  selesai\n";
             } else if (pilih == "b" || pilih == "B") {
                 cout << "ID Barang: "; getline(cin, id);
                 deleteBarang(LB, id);
-            } else {
-                cout << "Pilihan tidak valid\n";
+                cout << ">> Proses hapus barang selesai\n";
             }
         }
         else if (choice == 12) {
@@ -190,15 +196,25 @@ int main() {
             Barang* b = findBarang(LB, idB);
             if (t && b)
                 deleteRelasi(t, b);
+                cout << ">> Relasi berhasil dihapus\n";
             else
                 cout << "Toko atau Barang tidak ditemukan\n";
         }
+    }
 
-    } while (choice != 0);
+        else if (choice == 0) {
+            cout << ">> Keluar dari program...\n";
+    }
 
-    return 0;
-}
+    else {
+        cout << " >> Menu tidak valid\n";
 
+    }
+    
+} while (choice != 0);
+
+
+return
 
 
 
