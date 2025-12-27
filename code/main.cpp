@@ -9,6 +9,7 @@ int main() {
     createListBarang(LB);
 
     int choice;
+
     do {
         cout << "\n=================================\n";
         cout << "        MENU DATA PENJUALAN       \n";
@@ -33,6 +34,7 @@ int main() {
 
         cout << "\n---------------------------------\n";
 
+        /* ========== INSERT TOKO ========== */
         if (choice == 1) {
             string id, nama, pilih;
             double rating;
@@ -51,12 +53,14 @@ int main() {
 
             if (pilih == "f" || pilih == "F") {
                 insertFirstToko(LT, id, rating, nama);
-                cout << ">> Toko berhasil ditambahkan di AWAL\n";
-            } else if (pilih == "l" || pilih == "L") {
+                cout << "✔ Toko berhasil ditambahkan di AWAL\n";
+            }
+            else if (pilih == "l" || pilih == "L") {
                 insertLastToko(LT, id, rating, nama);
-                cout << ">> Toko berhasil ditambahkan di AKHIR\n";
-            } else {
-                cout << ">> Pilihan tidak valid\n";
+                cout << "✔ Toko berhasil ditambahkan di AKHIR\n";
+            }
+            else {
+                cout << "✘ Pilihan tidak valid, data tidak disimpan\n";
             }
 
             cout << "\n=== DAFTAR TOKO TERKINI ===\n";
@@ -71,11 +75,13 @@ int main() {
             if (pilih == "t" || pilih == "T") {
                 cout << "\n=== DAFTAR TOKO ===\n";
                 showAllToko(LT);
-            } else if (pilih == "b" || pilih == "B") {
+            }
+            else if (pilih == "b" || pilih == "B") {
                 cout << "\n=== DAFTAR BARANG ===\n";
                 showAllBarang(LB);
-            } else {
-                cout << ">> Pilihan tidak valid\n";
+            }
+            else {
+                cout << "✘ Pilihan tidak valid\n";
             }
         }
 
@@ -96,12 +102,14 @@ int main() {
 
             if (pilih == "f" || pilih == "F") {
                 insertFirstBarang(LB, id, harga, nama);
-                cout << ">> Barang berhasil ditambahkan di AWAL\n";
-            } else if (pilih == "l" || pilih == "L") {
+                cout << "✔ Barang berhasil ditambahkan di AWAL\n";
+            }
+            else if (pilih == "l" || pilih == "L") {
                 insertLastBarang(LB, id, harga, nama);
-                cout << ">> Barang berhasil ditambahkan di AKHIR\n";
-            } else {
-                cout << ">> Pilihan tidak valid\n";
+                cout << "✔ Barang berhasil ditambahkan di AKHIR\n";
+            }
+            else {
+                cout << "✘ Pilihan tidak valid, barang tidak disimpan\n";
             }
 
             cout << "\n=== DAFTAR BARANG TERKINI ===\n";
@@ -118,9 +126,9 @@ int main() {
 
             if (t && b) {
                 addRelasi(t, b);
-                cout << ">> Relasi berhasil dibuat\n";
+                cout << "✔ Relasi berhasil dibuat\n";
             } else {
-                cout << ">> Toko atau Barang tidak ditemukan\n";
+                cout << "✘ Toko atau Barang tidak ditemukan\n";
             }
         }
 
@@ -131,16 +139,15 @@ int main() {
 
         else if (choice == 6) {
             string idT;
-            cout << "ID Toko: ";
-            getline(cin, idT);
+            cout << "ID Toko: "; getline(cin, idT);
 
             Toko* t = findToko(LT, idT);
             if (t) {
-                cout << ">> Jumlah barang di Toko "
+                cout << "✔ Jumlah barang di "
                      << t->namaToko << " : "
                      << countBarangInToko(t) << endl;
             } else {
-                cout << ">> Toko tidak ditemukan\n";
+                cout << "✘ Toko tidak ditemukan\n";
             }
         }
 
@@ -150,22 +157,16 @@ int main() {
             getline(cin, pilih);
 
             if (pilih == "t" || pilih == "T") {
-                cout << "ID Toko: ";
-                getline(cin, key);
+                cout << "ID Toko: "; getline(cin, key);
                 Toko* t = findToko(LT, key);
-                if (t)
-                    cout << ">> Toko ditemukan: " << t->namaToko << endl;
-                else
-                    cout << ">> Toko tidak ditemukan\n";
+                if (t) cout << "✔ Toko ditemukan: " << t->namaToko << endl;
+                else cout << "✘ Toko tidak ditemukan\n";
             }
             else if (pilih == "b" || pilih == "B") {
-                cout << "ID Barang: ";
-                getline(cin, key);
+                cout << "ID Barang: "; getline(cin, key);
                 Barang* b = findBarang(LB, key);
-                if (b)
-                    cout << ">> Barang ditemukan: " << b->namaBarang << endl;
-                else
-                    cout << ">> Barang tidak ditemukan\n";
+                if (b) cout << "✔ Barang ditemukan: " << b->namaBarang << endl;
+                else cout << "✘ Barang tidak ditemukan\n";
             }
         }
 
@@ -178,28 +179,23 @@ int main() {
             Barang* b = findBarang(LB, idB);
 
             if (t && b) {
-                Relasi* r = findRelasi(t, b);
-                if (r)
-                    cout << ">> Relasi ditemukan\n";
+                if (findRelasi(t, b))
+                    cout << "✔ Relasi ditemukan\n";
                 else
-                    cout << ">> Relasi tidak ditemukan\n";
-            } else {
-                cout << ">> Toko atau Barang tidak ditemukan\n";
+                    cout << "✘ Relasi tidak ditemukan\n";
             }
         }
 
         else if (choice == 9) {
             string idB;
-            cout << "ID Barang: ";
-            getline(cin, idB);
+            cout << "ID Barang: "; getline(cin, idB);
             cout << "\n=== TOKO YANG MENJUAL BARANG ===\n";
             tokoMenjualBarang(LT, idB);
         }
 
         else if (choice == 10) {
             string idT;
-            cout << "ID Toko: ";
-            getline(cin, idT);
+            cout << "ID Toko: "; getline(cin, idT);
             cout << "\n=== BARANG YANG DIJUAL TOKO ===\n";
             barangDijualToko(LT, idT);
         }
@@ -210,15 +206,14 @@ int main() {
             getline(cin, pilih);
 
             if (pilih == "t" || pilih == "T") {
-                cout << "ID Toko: ";
-                getline(cin, id);
+                cout << "ID Toko: "; getline(cin, id);
                 deleteToko(LT, id);
-                cout << ">> Proses hapus toko selesai\n";
-            } else if (pilih == "b" || pilih == "B") {
-                cout << "ID Barang: ";
-                getline(cin, id);
+                cout << "✔ Proses hapus toko selesai\n";
+            }
+            else if (pilih == "b" || pilih == "B") {
+                cout << "ID Barang: "; getline(cin, id);
                 deleteBarang(LB, id);
-                cout << ">> Proses hapus barang selesai\n";
+                cout << "✔ Proses hapus barang selesai\n";
             }
         }
 
@@ -232,18 +227,16 @@ int main() {
 
             if (t && b) {
                 deleteRelasi(t, b);
-                cout << ">> Relasi berhasil dihapus\n";
-            } else {
-                cout << ">> Toko atau Barang tidak ditemukan\n";
+                cout << "✔ Relasi berhasil dihapus\n";
             }
         }
 
         else if (choice == 0) {
-            cout << ">> Keluar dari program...\n";
+            cout << "Keluar dari program...\n";
         }
 
         else {
-            cout << ">> Menu tidak valid\n";
+            cout << "✘ Menu tidak valid\n";
         }
 
     } while (choice != 0);
